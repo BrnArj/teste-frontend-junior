@@ -4,6 +4,14 @@ import { Player } from '~/models/Player';
 describe('Player', function () {
   let player: PlayerType;
 
+  beforeEach(() => {
+    // @ts-ignore
+    jest.spyOn(window, 'Audio').mockImplementation(() => ({
+      play: () => {},
+      pause: () => {},
+    }));
+  })
+
   describe('With no items', function () {
     beforeEach(function () {
       player = new Player();
